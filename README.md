@@ -34,14 +34,39 @@ highly depends on material. Calibration procedure is out of scope of this code.
 
 ## Technical notes
 
-1. This tool was designed to be quite fast, but I am not sure if I've succeed at this exercise.
-2. Code is meant to be simple and portable. Because of that I implemented my own [DSP micro-library](https://github.com/dev0x13/dsperado) and
-avoided using third-party libraries which requires separate compilation.
+1. This tool was designed to be quite fast, but I am not sure if I've succeed at this task.
+2. Code is meant to be simple and portable. Because of that I implemented auxiliary [DSP micro-library](https://github.com/dev0x13/dsperado) and
+avoided using third-party libraries which require separate compilation.
 3. The tool was initially developed for Windows and was being built only via Visual Studio, but at the time
 I am writing this, I've changed the build system to CMake. Build was tested on Ubuntu 20.04 with GCC 9.3 and Windows 10 with MSVC v142.
 
-## Running the tool
+## Building and running the tool
 
-cmake --build . --parallel --config Release
+### Building
 
-... 
+#### Linux
+
+* Create build directory: `mkdir _build && cd _build`
+* Run CMake: `cmake ..`
+* Build: `cmake --build .` or `make && make install`
+
+#### Windows
+
+* Create build directory: `mkdir _build ; cd _build`
+* Run CMake: `cmake [cmake options] ..`. If you are on x64 platform, you should specify x64 architecture explicitly for cmake: `cmake -A x64 [cmake options] ..`
+* Build: `cmake --build . --config Release`. It is necessarry to build in release mode, since TECIO was built this way.
+
+### Retrieveing sample data
+
+Archive with some sample data may be obtained from [this link](https://drive.google.com/file/d/1l28tJ3iTql8RGWtJrHPWC-KNTl5aYhvs/view?usp=sharing). This data was recorded during the experiment of heating tissue-mimicking test object with [HIFU](https://en.wikipedia.org/wiki/High-intensity_focused_ultrasound). This data series refers to a time period after removing the heating source, so it contains only cooling period of ~60 seconds.
+
+### Running
+
+* Get the executable file from the build directory.
+* Place it along with `data/config.ini` file and fix `raw_dir` field in config file with path to a folder containing sample data.
+* Run the executable file.
+* Output stuff will be placed to `output/` directory. `output/epsilon.plt` file will contain time series of thermal shift evolution. Thi file may be open via Tecplot or Paraview. Below is the output for the sample data:
+
+<p align="center">
+  <img src="https://github.com/dev0x13/ust_x/blob/master/sample_result.gif">
+</p>
