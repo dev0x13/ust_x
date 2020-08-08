@@ -1,0 +1,8 @@
+add_library(dsperado INTERFACE)
+set_property(TARGET dsperado PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_LIST_DIR}/dsperado-1.0/include)
+
+add_library(json INTERFACE)
+set_property(TARGET json PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_LIST_DIR}/json-3.9.1/include)
+
+add_library(inih INTERFACE)
+set_property(TARGET inih PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_LIST_DIR}/inih-42/include)

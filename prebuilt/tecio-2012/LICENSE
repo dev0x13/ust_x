@@ -1,0 +1,2 @@
+TecIO library source code is provided as part of TecPlot distribution to allow third-party applications to read and write Tecplot file format. It is unclear what kind of license this code is shipped this, but note that TecPlot itself is a paid software.
+More details: https://www.tecplot.com/products/tecio-library/
